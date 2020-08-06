@@ -1,0 +1,10 @@
+Package: dendrolenda
+Type: Package
+Title: This package aligns plots.
+Version: 0.1.0
+Author: Who wrote it
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
