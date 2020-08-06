@@ -2,9 +2,25 @@ Package: dendrolenda
 Type: Package
 Title: This package aligns plots.
 Version: 0.1.0
-Author: Who wrote it
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: c(person("Michal", "Burdukiewicz", 
+           email = "michalburdukiewicz@gmail.com",
+           role = c("cre", "aut")),
+           person("Katarzyna", "Sidorczuk", 
+           email = "sidorczuk.katarzyna17@gmail.com",
+           role = c("aut")),
+           person("Stefan", "Roediger", 
+           email = "stefan.roediger@b-tu.de", 
+           comment = c(ORCID = "0000-0002-1441-6512"),
+           role = c("aut")))
+Description: Package for alignment of dendrogram plots with heatmap.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Imports:
+    ggplot2,
+    dplyr,
+    ggdendro,
+    tidyr,
+    grid,
+    gridExtra
+RoxygenNote: 7.1.0

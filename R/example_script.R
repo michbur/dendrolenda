@@ -26,14 +26,14 @@ hm <- ggplot(hm_dat, aes(x = x1, y = x2, fill = factor(value))) +
   theme(legend.position = "bottom")
 
 
-d1 <- plot_dendrogram(d1)
-d2 <- plot_dendrogram(d2) + coord_flip()
-
-arrange_dendrogram(hm, d1, d2)
-
-arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
-                   d1 + theme_void(),
-                   d2 + theme_void())
+# d1 <- plot_dendrogram(d1)
+# d2 <- plot_dendrogram(d2) + coord_flip()
+# 
+# arrange_dendrogram(hm, d1, d2)
+# 
+# arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
+#                    d1 + theme_void(),
+#                    d2 + theme_void())
 
 get_legend <- function(gg_plot) {
   grob_table <- ggplotGrob(gg_plot)
