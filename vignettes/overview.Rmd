@@ -37,33 +37,32 @@ create_dend <- function(x, col_name1, col_name2) {
 
 # dendrolenda package usage
 
-Let's plot heatmap with aligned dendrograms using the following randomly generated data:
+## Let's plot heatmap with aligned dendrograms using the following randomly generated data:
 
 ```{r echo=FALSE}
-dat <- expand.grid(gene = sapply(1L:10, function(dummy)
+example_dat <- expand.grid(gene = sapply(1L:10, function(dummy)
   paste0(sample(letters, 3, replace = TRUE), collapse = "")),
   strain = paste0("strain", 1L:6)) %>%
   mutate(value = sample(0L:1, size = 60, replace = TRUE))
 
-head(dat)
-
+head(example_dat)
 ```
 
 
-Create dendrograms:
+## Create dendrograms:
 
 ```{r message=FALSE}
-d1 <- create_dend(dat, "gene", "strain")
-d2 <- create_dend(dat, "strain", "gene")
+d1_dat <- create_dend(example_dat, "gene", "strain")
+d2_dat <- create_dend(example_dat, "strain", "gene")
 ```
 
-Create heatmap:
+## Create heatmap:
 ```{r fig.width=7, fig.height=4}
-hm_dat <- mutate(dat,
+hm_dat <- mutate(example_dat,
                  gene = factor(gene),
-                 gene = factor(gene, levels = levels(gene)[order.dendrogram(d1)]),
+                 gene = factor(gene, levels = levels(gene)[order.dendrogram(d1_dat)]),
                  strain = factor(strain),
-                 strain = factor(strain, levels = levels(strain)[order.dendrogram(d2)]))
+                 strain = factor(strain, levels = levels(strain)[order.dendrogram(d2_dat)]))
 
 hm <- ggplot(hm_dat, aes(x = gene, y = strain, fill = factor(value))) +
   geom_tile(color = "black") +
@@ -72,17 +71,17 @@ hm
 ```
 
 
-Create dendrogram plots:
+## Create dendrogram plots:
 
 ```{r fig.width=7}
-d1 <- plot_dendrogram(d1)
-d2 <- plot_dendrogram(d2) + coord_flip()
+d1 <- plot_dendrogram(d1_dat)
+d2 <- plot_dendrogram(d2_dat) + coord_flip()
 
 d1 + d2
 ```
 
 
-Arrange all three plots with legend positioned at the bottom: aaa
+## Arrange all three plots with legend positioned at the bottom:
 
 ```{r fig.width=7, fig.height=7}
 arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
@@ -91,11 +90,31 @@ arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
 ```
 
 
-Arrange all three plots with legend positioned in the top-right corner:
+## Arrange all three plots with legend positioned in the top-right corner:
 
 ```{r fig.width=7, fig.height=7}
 arrange_dendrogram(hm + theme_bw() + theme(legend.position = "none"),
                    d1 + theme_void(),
                    d2 + theme_void(),
-                   get_legend(hm))
+                   top_right = get_legend(hm))
+```
+
+## Arrange all three plots with adjusted heights and widths:
+
+```{r fig.width=7, fig.height=7}
+arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
+                   d1 + theme_void(),
+                   d2 + theme_void(),
+                   widths = c(0.9, 0.1),
+                   heights = c(0.1, 0.9))
+```
+
+## Arrange all three plots with colored labels on right dendrogram:
+
+```{r fig.width=7, fig.height=7, warning=FALSE}
+label_colors <- c(rep("red", 3), rep("blue", 2), "green")
+arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom", 
+                                           axis.text.y = element_text(color = label_colors)),
+                   d1 + theme_void(),
+                   d2 + theme_void())
 ```
