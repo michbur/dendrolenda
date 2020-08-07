@@ -88,12 +88,12 @@
 <a href="#dendrolenda-package-usage" class="anchor"></a>dendrolenda package usage</h1>
 <p>Let’s plot heatmap with aligned dendrograms using the following randomly generated data:</p>
 <pre><code>##   gene  strain value
-## 1  vsn strain1     1
-## 2  vxp strain1     0
-## 3  ftj strain1     1
-## 4  cfh strain1     1
-## 5  aaw strain1     0
-## 6  sgl strain1     1</code></pre>
+## 1  eni strain1     0
+## 2  uie strain1     0
+## 3  fem strain1     1
+## 4  ryx strain1     1
+## 5  bok strain1     0
+## 6  bdd strain1     0</code></pre>
 <p>Create dendrograms:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="kw">d1</span> <span class="op">&lt;-</span> <span class="fu">create_dend</span>(<span class="kw">dat</span>, <span class="st">"gene"</span>, <span class="st">"strain"</span>)
@@ -121,12 +121,11 @@
 <span class="kw">d1</span> <span class="op">+</span> <span class="kw">d2</span>
 </pre></div>
 <p><img src="overview_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
-<p>Arrange all three plots with legend positioned at the bottom:</p>
+<p>Arrange all three plots with legend positioned at the bottom: aaa</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="fu"><a href="../reference/arrange_dendrogram.html">arrange_dendrogram</a></span>(<span class="kw">hm</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>() <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(legend.position = <span class="st">"bottom"</span>),
                    <span class="kw">d1</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>(),
-                   <span class="kw">d2</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>(),
-                   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_blank.html">geom_blank</a></span>() <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>())
+                   <span class="kw">d2</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>())
 </pre></div>
 <p><img src="overview_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
 <p>Arrange all three plots with legend positioned in the top-right corner:</p>
