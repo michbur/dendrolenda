@@ -1,6 +1,6 @@
 Package: dendrolenda
 Type: Package
-Title: This package aligns plots.
+Title: Align dendrograms and heatmaps
 Version: 0.1.0
 Authors@R: c(person("Michal", "Burdukiewicz", 
            email = "michalburdukiewicz@gmail.com",
