@@ -3,6 +3,7 @@
 export(arrange_dendrogram)
 export(get_legend)
 export(plot_dendrogram)
+export(create_dend)
 importFrom(ggdendro,dendro_data)
 importFrom(ggdendro,segment)
 importFrom(ggplot2,ggplot)

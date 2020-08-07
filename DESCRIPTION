@@ -23,4 +23,5 @@ Imports:
     tidyr,
     grid,
     gridExtra
-RoxygenNote: 7.1.0
+Language: en-US
+Note: 7.1.0
