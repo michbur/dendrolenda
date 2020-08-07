@@ -29,6 +29,9 @@ By default \code{NULL} leaving empty space.}
 
 \item{heights}{\code{numeric} vector of top dendrogram and heatmap heights}
 }
+\value{
+plot with heatmap and aligned dendrograms
+}
 \description{
 Arranges both dendrograms with heatmap.
 }
@@ -36,5 +39,13 @@ Arranges both dendrograms with heatmap.
 data(example_data)
 dendro_top <- plot_dendrogram(d1)
 dendro_right <- plot_dendrogram(d2) + coord_flip()
-arrange_dendrogram(hm, dendro_top, dendro_right)
+
+# Plot aligned dendrograms with legend at the bottom
+arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"), 
+d1 + theme_void(), d2 + theme_void())
+
+# Plot aligned dendrograms with legend in the top right corner
+arrange_dendrogram(hm + theme_bw() + theme(legend.position = "none"),
+d1 + theme_void(), d2 + theme_void(), get_legend(hm))
+
 }

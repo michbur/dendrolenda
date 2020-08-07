@@ -23,7 +23,7 @@ hm_dat <- mutate(dat,
 
 hm <- ggplot(hm_dat, aes(x = x1, y = x2, fill = factor(value))) +
   geom_tile(color = "black") +
-  theme(legend.position = "bottom")
+  theme(legend.position = "right")
 
 
 # d1 <- plot_dendrogram(d1)
