@@ -16,6 +16,8 @@ Description: Package for alignment of dendrogram plots with heatmap.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Depends:
+    R (>= 3.5.0)
 Imports:
     ggplot2,
     dplyr,
