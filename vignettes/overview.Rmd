@@ -20,6 +20,7 @@ library(gridExtra)
 library(ggdendro)
 library(dendrolenda)
 library(patchwork)
+library(praise)
 create_dend <- function(x, col_name1, col_name2) {
   pivot_wider(x, names_from = c(col_name2),
               values_from = "value") %>%
@@ -55,6 +56,9 @@ head(example_dat)
 d1_dat <- create_dend(example_dat, "gene", "strain")
 d2_dat <- create_dend(example_dat, "strain", "gene")
 ```
+```{r echo=FALSE}
+praise()
+```
 
 ## Create heatmap:
 ```{r fig.width=7, fig.height=4}
@@ -69,7 +73,9 @@ hm <- ggplot(hm_dat, aes(x = gene, y = strain, fill = factor(value))) +
   theme(legend.position = "right")
 hm
 ```
-
+```{r echo=FALSE}
+praise("Such a ${adjective} heatmap!")
+```
 
 ## Create dendrogram plots:
 
@@ -79,7 +85,9 @@ d2 <- plot_dendrogram(d2_dat) + coord_flip()
 
 d1 + d2
 ```
-
+```{r echo=FALSE}
+praise("${Exclamation}! This is just ${adjective}!")
+```
 
 ## Arrange all three plots with legend positioned at the bottom:
 
@@ -88,7 +96,9 @@ arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
                    d1 + theme_void(),
                    d2 + theme_void())
 ```
-
+```{r echo=FALSE}
+praise()
+```
 
 ## Arrange all three plots with legend positioned in the top-right corner:
 
@@ -97,6 +107,9 @@ arrange_dendrogram(hm + theme_bw() + theme(legend.position = "none"),
                    d1 + theme_void(),
                    d2 + theme_void(),
                    top_right = get_legend(hm))
+```
+```{r echo=FALSE}
+praise("${Exclamation}! This is just ${adjective}!")
 ```
 
 ## Arrange all three plots with adjusted heights and widths:
@@ -108,6 +121,9 @@ arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
                    widths = c(0.9, 0.1),
                    heights = c(0.1, 0.9))
 ```
+```{r echo=FALSE}
+praise()
+```
 
 ## Arrange all three plots with colored labels on right dendrogram:
 
@@ -117,4 +133,7 @@ arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom",
                                            axis.text.y = element_text(color = label_colors)),
                    d1 + theme_void(),
                    d2 + theme_void())
+```
+```{r echo=FALSE}
+praise("${EXCLAMATION}! You have done this ${adverb_manner}!")
 ```

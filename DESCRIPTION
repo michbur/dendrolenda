@@ -28,6 +28,7 @@ Imports:
     knitr
 Suggests:
     patchwork,
+    praise,
     spelling
 Language: en-US
 VignetteBuilder: knitr
