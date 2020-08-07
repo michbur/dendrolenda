@@ -1,0 +1,102 @@
+---
+title: "dendrolenda package"
+author: "Micha&#322; Burdukiewicz, Katarzyna Sidorczuk, Stefan Roediger"
+output: 
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{dendrolenda package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(grid)
+library(gridExtra)
+library(ggdendro)
+library(dendrolenda)
+library(patchwork)
+create_dend <- function(x, col_name1, col_name2) {
+  pivot_wider(dat, names_from = c(col_name2),
+              values_from = "value") %>%
+    as.data.frame() %>% {
+      rownames(.) <- .[[col_name1]]
+      .
+    } %>%
+    select(-1) %>%
+    as.matrix() %>%
+    dist() %>%
+    hclust() %>%
+    as.dendrogram()
+}
+```
+
+# dendrolenda package usage
+
+Let's plot heatmap with aligned dendrograms using the following randomly generated data:
+
+```{r echo=FALSE}
+dat <- expand.grid(gene = sapply(1L:10, function(dummy)
+  paste0(sample(letters, 3, replace = TRUE), collapse = "")),
+  strain = paste0("strain", 1L:6)) %>%
+  mutate(value = sample(0L:1, size = 60, replace = TRUE))
+
+head(dat)
+
+```
+
+
+Create dendrograms:
+
+```{r message=FALSE}
+d1 <- create_dend(dat, "gene", "strain")
+d2 <- create_dend(dat, "strain", "gene")
+```
+
+Create heatmap:
+```{r fig.width=7, fig.height=4}
+hm_dat <- mutate(dat,
+                 gene = factor(gene),
+                 gene = factor(gene, levels = levels(gene)[order.dendrogram(d1)]),
+                 strain = factor(strain),
+                 strain = factor(strain, levels = levels(strain)[order.dendrogram(d2)]))
+
+hm <- ggplot(hm_dat, aes(x = gene, y = strain, fill = factor(value))) +
+  geom_tile(color = "black") +
+  theme(legend.position = "right")
+hm
+```
+
+
+Create dendrogram plots:
+
+```{r fig.width=7}
+d1 <- plot_dendrogram(d1)
+d2 <- plot_dendrogram(d2) + coord_flip()
+
+d1 + d2
+```
+
+
+Arrange all three plots with legend positioned at the bottom:
+
+```{r fig.width=7, fig.height=7}
+arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
+                   d1 + theme_void(),
+                   d2 + theme_void(),
+                   ggplot() + geom_blank() + theme_void())
+```
+
+
+Arrange all three plots with legend positioned in the top-right corner:
+
+```{r fig.width=7, fig.height=7}
+arrange_dendrogram(hm + theme_bw() + theme(legend.position = "none"),
+                   d1 + theme_void(),
+                   d2 + theme_void(),
+                   get_legend(hm))
+```

@@ -3,7 +3,9 @@
 #' Plots dendrogram as a segment with leaf labels.
 #' @param dendro object of class \code{dendrogram}
 #' @return dendrogram plot
-#' @importFrom ggplot2 ggplot
+#' @importFrom dplyr %>%  
+#' @import ggplot2
+#' @importFrom stats nobs
 #' @importFrom ggdendro dendro_data segment
 #' @examples 
 #' data(example_data)

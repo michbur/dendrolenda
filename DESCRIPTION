@@ -24,6 +24,10 @@ Imports:
     ggdendro,
     tidyr,
     grid,
-    gridExtra
+    gridExtra,
+    knitr,
+    patchwork
 Language: en-US
+VignetteBuilder: knitr
 Note: 7.1.0
+RoxygenNote: 7.1.0

@@ -11,21 +11,21 @@
 #' @param widths \code{numeric} vector of heatmap and right dendrogram widths
 #' @param heights \code{numeric} vector of top dendrogram and heatmap heights
 #' @return plot with heatmap and aligned dendrograms
-#' @importFrom ggplot2 ggplotGrob 
-#' @importFrom grid grid.rect unit.pmax
+#' @importFrom grid grid.rect unit.pmax gpar
 #' @importFrom gridExtra grid.arrange
 #' @examples 
+#' library(ggplot2)
 #' data(example_data)
 #' dendro_top <- plot_dendrogram(d1)
 #' dendro_right <- plot_dendrogram(d2) + coord_flip()
 #' 
 #' # Plot aligned dendrograms with legend at the bottom
 #' arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"), 
-#' d1 + theme_void(), d2 + theme_void())
+#' dendro_top + theme_void(), dendro_right + theme_void())
 #' 
 #' # Plot aligned dendrograms with legend in the top right corner
 #' arrange_dendrogram(hm + theme_bw() + theme(legend.position = "none"),
-#' d1 + theme_void(), d2 + theme_void(), get_legend(hm))
+#' dendro_top + theme_void(), dendro_right + theme_void(), get_legend(hm))
 #' 
 #' @export
 arrange_dendrogram <- function(heatmap,

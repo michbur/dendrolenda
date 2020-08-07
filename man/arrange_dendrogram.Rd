@@ -22,7 +22,7 @@ arrange_dendrogram(
 \item{dendrogram_right}{right dendrogram plot generated with 
 \code{\link{plot_dendrogram}}}
 
-\item{top_right}{element placed in the top right part of the plot. 
+\item{top_right}{element placed in the top right part of the plot.
 By default \code{NULL} leaving empty space.}
 
 \item{widths}{\code{numeric} vector of heatmap and right dendrogram widths}
@@ -36,16 +36,17 @@ plot with heatmap and aligned dendrograms
 Arranges both dendrograms with heatmap.
 }
 \examples{
+library(ggplot2)
 data(example_data)
 dendro_top <- plot_dendrogram(d1)
 dendro_right <- plot_dendrogram(d2) + coord_flip()
 
 # Plot aligned dendrograms with legend at the bottom
 arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"), 
-d1 + theme_void(), d2 + theme_void())
+dendro_top + theme_void(), dendro_right + theme_void())
 
 # Plot aligned dendrograms with legend in the top right corner
 arrange_dendrogram(hm + theme_bw() + theme(legend.position = "none"),
-d1 + theme_void(), d2 + theme_void(), get_legend(hm))
+dendro_top + theme_void(), dendro_right + theme_void(), get_legend(hm))
 
 }
