@@ -1,3 +1,5 @@
+![check](https://github.com/michbur/dendrolenda/workflows/check/badge.svg)
+
 # dendrolenda
 
 Package for alignment of dendrogram plots with heatmap.
