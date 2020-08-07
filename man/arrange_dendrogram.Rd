@@ -16,10 +16,10 @@ arrange_dendrogram(
 \arguments{
 \item{heatmap}{object containing heatmap plot}
 
-\item{dendrogram_top}{top dendrogram plot generated with 
+\item{dendrogram_top}{top dendrogram plot generated with
 \code{\link{plot_dendrogram}}}
 
-\item{dendrogram_right}{right dendrogram plot generated with 
+\item{dendrogram_right}{right dendrogram plot generated with
 \code{\link{plot_dendrogram}}}
 
 \item{top_right}{element placed in the top right part of the plot.
@@ -42,7 +42,7 @@ dendro_top <- plot_dendrogram(d1)
 dendro_right <- plot_dendrogram(d2) + coord_flip()
 
 # Plot aligned dendrograms with legend at the bottom
-arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"), 
+arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
 dendro_top + theme_void(), dendro_right + theme_void())
 
 # Plot aligned dendrograms with legend in the top right corner

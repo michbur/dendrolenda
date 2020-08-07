@@ -21,7 +21,7 @@ library(ggdendro)
 library(dendrolenda)
 library(patchwork)
 create_dend <- function(x, col_name1, col_name2) {
-  pivot_wider(dat, names_from = c(col_name2),
+  pivot_wider(x, names_from = c(col_name2),
               values_from = "value") %>%
     as.data.frame() %>% {
       rownames(.) <- .[[col_name1]]
@@ -82,13 +82,12 @@ d1 + d2
 ```
 
 
-Arrange all three plots with legend positioned at the bottom:
+Arrange all three plots with legend positioned at the bottom: aaa
 
 ```{r fig.width=7, fig.height=7}
 arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
                    d1 + theme_void(),
-                   d2 + theme_void(),
-                   ggplot() + geom_blank() + theme_void())
+                   d2 + theme_void())
 ```
 
 

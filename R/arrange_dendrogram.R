@@ -1,10 +1,10 @@
 #' Arrange dendrograms with heatmap
-#' 
+#'
 #' Arranges both dendrograms with heatmap.
 #' @param heatmap object containing heatmap plot
-#' @param dendrogram_top top dendrogram plot generated with 
+#' @param dendrogram_top top dendrogram plot generated with
 #' \code{\link{plot_dendrogram}}
-#' @param dendrogram_right right dendrogram plot generated with 
+#' @param dendrogram_right right dendrogram plot generated with
 #' \code{\link{plot_dendrogram}}
 #' @param top_right element placed in the top right part of the plot.
 #' By default \code{NULL} leaving empty space.
@@ -13,20 +13,20 @@
 #' @return plot with heatmap and aligned dendrograms
 #' @importFrom grid grid.rect unit.pmax gpar
 #' @importFrom gridExtra grid.arrange
-#' @examples 
+#' @examples
 #' library(ggplot2)
 #' data(example_data)
 #' dendro_top <- plot_dendrogram(d1)
 #' dendro_right <- plot_dendrogram(d2) + coord_flip()
-#' 
+#'
 #' # Plot aligned dendrograms with legend at the bottom
-#' arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"), 
+#' arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
 #' dendro_top + theme_void(), dendro_right + theme_void())
-#' 
+#'
 #' # Plot aligned dendrograms with legend in the top right corner
 #' arrange_dendrogram(hm + theme_bw() + theme(legend.position = "none"),
 #' dendro_top + theme_void(), dendro_right + theme_void(), get_legend(hm))
-#' 
+#'
 #' @export
 arrange_dendrogram <- function(heatmap,
                                dendrogram_top,
@@ -40,7 +40,7 @@ arrange_dendrogram <- function(heatmap,
                     dendrogram_right = ggplotGrob(dendrogram_right))
 
   if(is.null(top_right))
-    top_right <- grid.rect(gp = gpar(col = NA))
+    top_right <- grid.rect(gp = gpar(col = NA), draw = FALSE)
 
   max_width <- unit.pmax(grob_list[["heatmap"]][["widths"]],
                          grob_list[["dendrogram_top"]][["widths"]])
