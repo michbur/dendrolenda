@@ -25,9 +25,11 @@ Imports:
     tidyr,
     grid,
     gridExtra,
-    knitr,
-    patchwork
+    knitr
+Suggests:
+    patchwork,
+    spelling
 Language: en-US
 VignetteBuilder: knitr
 Note: 7.1.0
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
