@@ -1,6 +1,6 @@
 #' Plot dendrogram
 #' 
-#' Plots dendrogram as a segment with leaf labels. 
+#' Plots dendrogram as a segment with leaf labels.
 #' @param dendro object of class \code{dendrogram}
 #' @return dendrogram plot
 #' @importFrom ggplot2 ggplot

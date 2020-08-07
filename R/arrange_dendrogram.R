@@ -6,8 +6,8 @@
 #' \code{\link{plot_dendrogram}}
 #' @param dendrogram_right right dendrogram plot generated with 
 #' \code{\link{plot_dendrogram}}
-#' @param top_right element placed in the top right part of the plot. 
-#' By default \code{NULL} leaving empty space. 
+#' @param top_right element placed in the top right part of the plot.
+#' By default \code{NULL} leaving empty space.
 #' @param widths \code{numeric} vector of heatmap and right dendrogram widths
 #' @param heights \code{numeric} vector of top dendrogram and heatmap heights
 #' @importFrom ggplot2 ggplotGrob 
