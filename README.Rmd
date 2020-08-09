@@ -1,3 +1,11 @@
+---
+title: ""
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ![check](https://github.com/michbur/dendrolenda/workflows/check/badge.svg)
 
@@ -7,18 +15,17 @@ Package for alignment of dendrogram plots with heatmap in ggplot2.
 
 ## Background
 
-*dendrolenda* is a freely available software that allows users to
-visualize their data in the form of heat maps. It has an easy-to-use
-interface and makes alignments of dendrograms plots with heatmaps work
-like a charm.
+*dendrolenda* is a freely available software that allows users to visualize 
+their data in the form of heat maps. It has an easy-to-use interface and makes 
+alignments of dendrograms plots with heatmaps work like a charm. 
 
 ## Installation
 
-*dendrolenda* is available on
-[github](https://github.com/michbur/dendrolenda). One can install the
-latest development version of the code using the following code:
+*dendrolenda* is available on [github](https://github.com/michbur/dendrolenda). 
+One can install the latest development version of the code using the following 
+code:
 
-``` r
+```R
 if("remotes" %in% rownames(installed.packages()) == FALSE) {
 install.packages("remotes")
 }
@@ -27,7 +34,7 @@ remotes::install_github("https://github.com/michbur/dendrolenda")
 
 ## Usage
 
-``` r
+```{r}
 library(ggplot2)
 library(dendrolenda)
 data(example_data)
@@ -39,4 +46,3 @@ arrange_dendrogram(hm + theme_bw() + theme(legend.position = "bottom"),
 dendro_top + theme_void(), dendro_right + theme_void())
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->

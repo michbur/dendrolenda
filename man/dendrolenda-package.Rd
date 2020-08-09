@@ -10,6 +10,14 @@ dendrolenda package allows easy visualization of heatmaps with dendrograms.
 The main function \code{\link{arrange_dendrogram}} aligns dendrograms
 with heatmap, so manual arrangement of plots is not necessary!
 }
+\section{To hard-working Rafal}{
+
+
+We know how hard you work and how much effort you put in the presentation of
+your results, so here you have a little tool to make your work a bit
+(hopefully) easier.
+}
+
 \section{Happy Birthday, Rafal!}{
 
 We know how many heatmaps you plot \cr
