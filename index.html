@@ -76,7 +76,7 @@
 <div id="dendrolenda" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#dendrolenda" class="anchor"></a>dendrolenda</h1></div>
-<p>Package for alignment of dendrogram plots with heatmap.</p>
+<p>Package for alignment of dendrogram plots with heatmap in ggplot2.</p>
 <div id="background" class="section level2">
 <h2 class="hasAnchor">
 <a href="#background" class="anchor"></a>Background</h2>
@@ -93,13 +93,21 @@
 <span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"https://github.com/michbur/dendrolenda"</span>)
 </pre></div>
 </div>
-<div id="manual" class="section level2">
+<div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#manual" class="anchor"></a>Manual</h2>
-<p>To start the software open an R session and call:</p>
+<a href="#usage" class="anchor"></a>Usage</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">dendrolenda</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="kw">example_data</span>)
+<span class="kw">dendro_top</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plot_dendrogram.html">plot_dendrogram</a></span>(<span class="kw">d1</span>)
+<span class="kw">dendro_right</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/plot_dendrogram.html">plot_dendrogram</a></span>(<span class="kw">d2</span>) <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>()
+
+<span class="co"># Plot aligned dendrograms with legend at the bottom</span>
+<span class="fu"><a href="reference/arrange_dendrogram.html">arrange_dendrogram</a></span>(<span class="kw">hm</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>() <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(legend.position = <span class="st">"bottom"</span>),
+<span class="kw">dendro_top</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>(), <span class="kw">dendro_right</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>())
 </pre></div>
+<p><img src="README_files/figure-gfm/unnamed-chunk-1-1.png"><!-- --></p>
 </div>
 </div>
 
